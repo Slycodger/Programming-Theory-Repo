@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class ResetData : MonoBehaviour
 {
     private PlayerData PD;
+    private RandomData RD;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,12 +16,14 @@ public class ResetData : MonoBehaviour
     void Update()
     {
         PD = GameObject.Find("PlayerData").GetComponent<PlayerData>();
+        RD = GameObject.Find("GameManager").GetComponent<RandomData>();
     }
 
     public void RestartData() {
-        PlayerData.NameCheck = "";
-        PlayerData.NameSave.text = "";
-        
-        
+        RD.Randomized = 0;
+
+        PD.NameSave.text = "";
+        PD.Save();
+        SceneManager.LoadScene(0);
     }
 }

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
-{   
-
+{
     public int[] SceneToGo;
     private GameObject Pause;
     private void Update()
@@ -22,6 +21,7 @@ public class GameManager : MonoBehaviour
     public void OnWard()
     {
         SceneManager.LoadScene(SceneToGo[2]);
+       
     }
     public void Resume()
     {
