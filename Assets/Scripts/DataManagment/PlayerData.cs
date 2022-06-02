@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using UnityEngine.SceneManagement;
-public class PlayerData : MonoBehaviour
+public class PlayerData : Player
 {
+
+    //INHERTITANCE
     public Text NameSave;
     private int CheckAmountOfSaves;
     public static string NameCheck;
@@ -63,10 +65,10 @@ public class PlayerData : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex > 1)
         {
-            data.State = RD.stateN;
-            data.Cash = RD.cashN;
-            data.Occupancy = RD.occupancyN;
-            data.Place = RD.partN;
+            data.State = RandomData.stateN;
+            data.Cash = RandomData.cashN;
+            data.Occupancy = RandomData.occupancyN;
+            data.Place = RandomData.partN;
         }
         if (SceneManager.GetActiveScene().buildIndex == 2)
         {
@@ -86,13 +88,16 @@ public class PlayerData : MonoBehaviour
             SaveData data = JsonUtility.FromJson<SaveData>(json);
             if (SceneManager.GetActiveScene().buildIndex > 1)
             { 
-                RD.stateN = data.State;
-                RD.cashN = data.Cash;
-                RD.occupancyN = data.Occupancy;
-                RD.partN = data.Place;
-
+                RandomData.stateN = data.State;
+                RandomData.cashN = data.Cash;
+                RandomData.occupancyN = data.Occupancy;
+                RandomData.partN = data.Place;
+                
         }
             NameCheck = data.Name;
+            Job = data.Occupancy;
+            Money = data.Cash;
+            State = data.State;
         }
     }
 }

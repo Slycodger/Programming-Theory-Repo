@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomData : MonoBehaviour
+public class RandomData : PlayerData
 {
     public string[] Places;
     public string[] Cash;
     public string[] Occupancy;
     public string[] City;
 
-    public int stateN;
-    public int cashN;
-    public int occupancyN;
-    public int partN;
+   [SerializeField] public static int stateN;
+   [SerializeField] public static int cashN;
+    [SerializeField]public static int occupancyN;
+    [SerializeField]public static int partN;
 
     public  string state;
     public  int cash;

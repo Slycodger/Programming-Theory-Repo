@@ -189,6 +189,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &359534502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 359534504}
+  - component: {fileID: 359534503}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &359534503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359534502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cc13ee60463d394880ac4e4586e9e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NameSave: {fileID: 0}
+  test: 
+  Name: 
+--- !u!4 &359534504
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359534502}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 927.704, y: 904.1798, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &366988573
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +256,7 @@ GameObject:
   m_IsActive: 1
 --- !u!224 &366988574
 RectTransform:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1591,7 +1638,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1564085093}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2135075216}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: GameOn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1564085093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2575,7 +2634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf8d05ec4fb99d46bf68841c961adb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToGo: 010000000000000002000000
+  SceneToGo: 01000000000000000200000003000000
 --- !u!4 &2135075217
 Transform:
   m_ObjectHideFlags: 0
@@ -2614,6 +2673,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6299594a429e5f45baf2b148e225b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NameSave: {fileID: 0}
+  test: 
+  Name: 
   Places:
   - 
   - 
@@ -2638,10 +2700,6 @@ MonoBehaviour:
   - 
   - 
   - 
-  stateN: 0
-  cashN: 0
-  occupancyN: 0
-  partN: 0
   state: 0
   cash: 0
   occupancy: 0

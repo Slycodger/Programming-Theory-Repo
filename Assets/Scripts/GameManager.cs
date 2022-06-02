@@ -28,5 +28,9 @@ public class GameManager : MonoBehaviour
         Pause = GameObject.Find("Pause");
         Pause.gameObject.SetActive(false);
     }
+    public void GameOn()
+    {
+        SceneManager.LoadScene(SceneToGo[3]);
+    }
 
 }
