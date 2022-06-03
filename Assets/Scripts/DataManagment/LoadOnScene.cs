@@ -5,17 +5,21 @@ using UnityEngine;
 public class LoadOnScene : MonoBehaviour
 {
     private PlayerData PD;
+    public static int time = 0;
     // Start is called before the first frame update
     void Start()
     {
         PD = GameObject.Find("PlayerData").GetComponent<PlayerData>();
-
+        
 
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        PD.Load();
+        time ++;
+        if (time <= 10)
+        {
+            PD.Load();
+        }
     }
+    // Update is called once per frame
 }

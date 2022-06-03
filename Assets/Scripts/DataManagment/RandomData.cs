@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomData : PlayerData
+public class RandomData : Player
 {
+    //INHERTANCE
     public string[] Places;
     public string[] Cash;
     public string[] Occupancy;
@@ -14,21 +15,21 @@ public class RandomData : PlayerData
     [SerializeField]public static int occupancyN;
     [SerializeField]public static int partN;
 
-    public  string state;
-    public  int cash;
-    public  string occupancy;
-    public  string part;
+    public static string state;
+    public static int cash;
+    public static string occupancy;
+    public static string part;
 
     private int minCash;
     private int minOccupancy;
     private int minCity;
 
     public int Randomized;
+    public int I = 0;
     private PlayerData PD;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -41,6 +42,17 @@ public class RandomData : PlayerData
             RandomStuff();
         }
         DeCode();
+        I++;
+
+        if (I <= 5)
+        {
+            Player.Money = cash;
+        }
+
+        
+        Player.State = state;
+        Player.Place = part;
+        Player.Job = occupancy;
     }
     public void RandomStuff()
     {
@@ -66,7 +78,7 @@ public class RandomData : PlayerData
             minOccupancy = 1;
         }
 
-        occupancyN = Random.Range(minOccupancy, Occupancy.Length);
+        occupancyN = Random.Range(1, 2);
 
         if (occupancyN >= 3)
         {
@@ -82,7 +94,10 @@ public class RandomData : PlayerData
         Randomized = 1;
     }
     public void DeCode()
-    {
+    {   
+        //Encapsulation
+        //Preventing variables from being to high or to low what is normal by returning null
+
         if (stateN == 5)
         {
             state = "California";
@@ -106,7 +121,10 @@ public class RandomData : PlayerData
         {
             state = "Illinois";
         }
-        else if(stateN == 0)
+        else if(stateN <= 0)
+        {
+            state = "Null";
+        }else if(stateN >= 6)
         {
             state = "Null";
         }
@@ -116,17 +134,17 @@ public class RandomData : PlayerData
 
         if (cashN == 5)
         {
-            cash = 900000;
+            cash = 500000;
 
         }
         else if (cashN == 4)
         {
-            cash = 500000;
+            cash = 80000;
 
         }
         else if (cashN == 3)
         {
-            cash = 80000;
+            cash = 50000;
 
         }
         else if (cashN == 2)
@@ -137,7 +155,11 @@ public class RandomData : PlayerData
         {
             cash = 10000;
         }
-        else if (cashN == 0)
+        else if (cashN <= 0)
+        {
+            cash = 0;
+        }
+        else if(cashN >= 6)
         {
             cash = 0;
         }
@@ -145,7 +167,7 @@ public class RandomData : PlayerData
 
 
 
-        if (occupancyN == 5)
+        if (occupancyN >= 5)
         {
             occupancy = "Surgeon";
 
@@ -168,7 +190,10 @@ public class RandomData : PlayerData
         {
             occupancy = "Homeless";
         }
-        else if (occupancyN == 0)
+        else if (occupancyN <= 0)
+        {
+            occupancy = "Null";
+        }else if(occupancyN >= 6)
         {
             occupancy = "Null";
         }
@@ -198,7 +223,10 @@ public class RandomData : PlayerData
         {
             part = "Streets";
         }
-        else if (partN == 0)
+        else if (partN <= 0)
+        {
+            part = "Null";
+        }else if(partN >= 6)
         {
             part = "Null";
         }

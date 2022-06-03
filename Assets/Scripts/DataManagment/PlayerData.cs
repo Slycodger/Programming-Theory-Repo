@@ -4,10 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using UnityEngine.SceneManagement;
-public class PlayerData : Player
+public class PlayerData : MonoBehaviour
 {
 
-    //INHERTITANCE
     public Text NameSave;
     private int CheckAmountOfSaves;
     public static string NameCheck;
@@ -47,15 +46,24 @@ public class PlayerData : Player
         }
 
     }
+
+    //Encapsulation
+    //Even if variable is changed the moment load is activated they will return to normal,
+    //load is called for the first 10 frames of every scene for the scenes that use the data
     [System.Serializable]
     class SaveData
     {
         public string Name;
-        public int State;
+        public string State;
         public int Cash;
-        public int Occupancy;
-        public int Place;
-        public bool HaveSaved;
+        public string Occupancy;
+        public string Place;
+        public  bool HaveSaved;
+        public int StateN;
+        public int CashN;
+        public int OccupancyN;
+        public int PlaceN;
+
     }
 
     public void Save()
@@ -63,16 +71,18 @@ public class PlayerData : Player
         SaveData data = new SaveData();
 
 
-        if (SceneManager.GetActiveScene().buildIndex > 1)
-        {
-            data.State = RandomData.stateN;
-            data.Cash = RandomData.cashN;
-            data.Occupancy = RandomData.occupancyN;
-            data.Place = RandomData.partN;
-        }
-        if (SceneManager.GetActiveScene().buildIndex == 2)
-        {
-        }
+
+        
+        data.State = Player.State;
+        data.Cash = Player.Money;
+        data.Occupancy = Player.Job;
+        data.Place = Player.Place;
+        data.StateN = RandomData.stateN;
+        data.CashN = RandomData.cashN;
+        data.OccupancyN = RandomData.occupancyN;
+        data.PlaceN = RandomData.partN;
+        
+
         data.Name = NameSave.text;
         string json = JsonUtility.ToJson(data);
 
@@ -86,18 +96,21 @@ public class PlayerData : Player
         {
             string json = File.ReadAllText(path);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
-            if (SceneManager.GetActiveScene().buildIndex > 1)
-            { 
-                RandomData.stateN = data.State;
-                RandomData.cashN = data.Cash;
-                RandomData.occupancyN = data.Occupancy;
-                RandomData.partN = data.Place;
-                
-        }
-            NameCheck = data.Name;
-            Job = data.Occupancy;
-            Money = data.Cash;
-            State = data.State;
+            {
+                Player.State = data.State;
+                Player.Money = data.Cash;
+                Player.Job = data.Occupancy;
+                Player.Place = data.Place;
+                Player.Name = data.Name;
+                RandomData.stateN = data.StateN;
+                RandomData.cashN = data.CashN;
+                RandomData.occupancyN = data.OccupancyN;
+                RandomData.partN = data.PlaceN;
+
+                NameCheck = data.Name;
+            }
         }
     }
 }
+    
+
