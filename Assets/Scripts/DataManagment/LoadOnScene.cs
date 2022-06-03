@@ -4,22 +4,35 @@ using UnityEngine;
 
 public class LoadOnScene : MonoBehaviour
 {
+    public int score = 0;
     private PlayerData PD;
-    public static int time = 0;
-    // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
+        StartCoroutine(time());
         PD = GameObject.Find("PlayerData").GetComponent<PlayerData>();
-        
-
     }
-    private void Update()
+
+    public void Update()
     {
-        time ++;
-        if (time <= 10)
+        if (score >= 2)
         {
             PD.Load();
         }
     }
-    // Update is called once per frame
+    IEnumerator time()
+    {
+        while (true)
+        {
+            if (score < 4)
+            {
+                timeCount();
+                yield return new WaitForSeconds(1);
+            }
+        }
+    }
+
+    void timeCount()
+    {
+        score += 1;
+    }
 }

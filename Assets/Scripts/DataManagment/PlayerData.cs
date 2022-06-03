@@ -49,7 +49,7 @@ public class PlayerData : MonoBehaviour
 
     //Encapsulation
     //Even if variable is changed the moment load is activated they will return to normal,
-    //load is called for the first 10 frames of every scene for the scenes that use the data
+    //load is called after 2 secounds of every scene for all the scenes
     [System.Serializable]
     class SaveData
     {
@@ -108,6 +108,8 @@ public class PlayerData : MonoBehaviour
                 RandomData.partN = data.PlaceN;
 
                 NameCheck = data.Name;
+
+                Debug.Log("Loaded");
             }
         }
     }

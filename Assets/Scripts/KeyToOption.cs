@@ -17,7 +17,7 @@ public class KeyToOption : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Infor.gameObject.SetActive(false);
+        Infor.gameObject.SetActive(true);
         Work.gameObject.SetActive(false);
         PD = GameObject.Find("PlayerData").GetComponent<PlayerData>();
     }
@@ -36,7 +36,7 @@ public class KeyToOption : MonoBehaviour
             {
                 Work.gameObject.SetActive(true);
 
-                Save();
+                PD.Save();
 
                 Promotion.Happy--;
                 if(RandomData.occupancyN == 1)
@@ -55,11 +55,6 @@ public class KeyToOption : MonoBehaviour
                 {
                     work5.Work();
                 }
-
-            }
-            else
-            {
-                Debug.Log("Need to be more happy when working");
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha3) && Promotion.Happy<5 )
