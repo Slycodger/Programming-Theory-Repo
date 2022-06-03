@@ -42,8 +42,11 @@ public class RandomData : Player
             RandomStuff();
         }
         DeCode();
-        I++;
 
+        if (I < 10)
+        {
+            I++;
+        }
         if (I <= 5)
         {
             Player.Money = cash;

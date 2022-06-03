@@ -6,6 +6,7 @@ public class LoadOnScene : MonoBehaviour
 {
     public int score = 0;
     private PlayerData PD;
+    private bool Loaded = false;
     public void Start()
     {
         StartCoroutine(time());
@@ -17,22 +18,28 @@ public class LoadOnScene : MonoBehaviour
         if (score >= 2)
         {
             PD.Load();
+            Loaded = true;
+        }
+        if (Loaded)
+        {
+            score = 0;
         }
     }
     IEnumerator time()
     {
         while (true)
         {
-            if (score < 4)
-            {
                 timeCount();
                 yield return new WaitForSeconds(1);
-            }
+            
         }
     }
 
     void timeCount()
     {
-        score += 1;
+        if (!Loaded)
+        {
+            score += 1;
+        }
     }
 }

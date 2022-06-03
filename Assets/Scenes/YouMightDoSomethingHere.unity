@@ -1206,9 +1206,9 @@ GameObject:
   - component: {fileID: 1792017069}
   - component: {fileID: 1792017070}
   - component: {fileID: 1792017071}
-  - component: {fileID: 1792017072}
   - component: {fileID: 1792017068}
   - component: {fileID: 1792017073}
+  - component: {fileID: 1792017072}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1293,6 +1293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adad7f13b0be6b64aa45017cda8829d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
 --- !u!114 &1792017073
 MonoBehaviour:
   m_ObjectHideFlags: 0

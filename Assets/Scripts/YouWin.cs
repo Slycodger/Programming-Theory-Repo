@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class YouWin : MonoBehaviour
 {
     public GameObject Congrats;
-    private float timer;
+    private int time;
     // Update is called once per frame
     private void Start()
     {
@@ -16,12 +16,24 @@ public class YouWin : MonoBehaviour
         if(Player.Money > 10000000 && RandomData.occupancyN == 5 && RandomData.partN == 5 && RandomData. stateN == 5)
         {
             Congrats.gameObject.SetActive(true);
-
-            timer = Time.deltaTime;
+            StartCoroutine(timer());
         }
-        if(timer > 20)
+
+        if (time >= 5)
         {
             SceneManager.LoadScene(0);
         }
+    }
+    IEnumerator timer()
+    {
+        while (true)
+        {
+            TimeCount();
+            yield return new WaitForSeconds(1);
+        }
+    }
+    public void TimeCount()
+    {
+        time++;
     }
 }
